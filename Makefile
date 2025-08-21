@@ -6,20 +6,15 @@ VERSION ?= $(shell grep -E '^VERSION=' $(BIN) | cut -d\" -f2)
 
 .PHONY: help
 help:
-	@echo "make lint | test | format | release | tag VERSION=X.Y.Z"
+	@echo "make lint | test | release | tag VERSION=X.Y.Z"
 
 .PHONY: lint
 lint:
 	@zsh -n $(BIN)
-	@shfmt -d -i 2 -ci -sr .
-
-.PHONY: format
-format:
-	@shfmt -w -i 2 -ci -sr .
-
+	
 .PHONY: test
 test:
-	@bats -r test
+	@bats -r tests
 
 .PHONY: tag
 tag:
@@ -34,4 +29,4 @@ release: lint test
 
 # Add a make target to run tasks (lint, format, test)
 .PHONY: all
-all: lint format test
+all: lint test

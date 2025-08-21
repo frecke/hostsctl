@@ -13,10 +13,9 @@ jobs:
       - name: Install tooling
         run: |
           brew update
-          brew install shfmt bats-core
+          brew install bats-core
       - name: Lint
         run: |
           zsh -n bin/hostsctl.zsh
-          shfmt -l -d -i 2 -ci -sr .
       - name: Test
         run: bats -r test

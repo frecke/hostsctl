@@ -46,8 +46,8 @@ hs rm --tag demo
 hs flush
 ```
 
-## macOS permissions
-Editing `/etc/hosts` needs `sudo`. `hostsctl` runs `cp/dscacheutil/killall` mDNSResponder with sudo.
+### macOS permissions
+Editing `/etc/hosts` needs `sudo`. `hostsctl` runs `cp/dscacheutil/killall` `mDNSResponder` with sudo.
 You’ll be prompted the first time in a session.
 
 ## Testing

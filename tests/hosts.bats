@@ -3,8 +3,8 @@
 setup() {
   export TMPDIR="${BATS_TEST_TMPDIR}"
   export HOSTS_FILE="${TMPDIR}/hosts"
-  export SUDO=""              # avoid sudo in tests
-  export SKIP_FLUSH=1         # no DNS flush in CI
+  export SUDO=""      # avoid sudo in tests
+  export SKIP_FLUSH=1 # no DNS flush in CI
   printf "# base\n127.0.0.1 localhost\n" > "$HOSTS_FILE"
   cp "$BATS_TEST_DIRNAME/../bin/hostsctl.zsh" "$TMPDIR/hostsctl.zsh"
   chmod +x "$TMPDIR/hostsctl.zsh"
