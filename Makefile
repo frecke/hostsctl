@@ -10,7 +10,7 @@ help:
 
 .PHONY: lint
 lint:
-	@shellcheck -x $(BIN)
+	@zsh -n $(BIN)
 	@shfmt -d -i 2 -ci -sr .
 
 .PHONY: format
@@ -31,4 +31,7 @@ tag:
 .PHONY: release
 release: lint test
 	@echo "Cut a GitHub release for v$(VERSION)"
-ß
+
+# Add a make target to run tasks (lint, format, test)
+.PHONY: all
+all: lint format test

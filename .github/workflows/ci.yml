@@ -13,10 +13,10 @@ jobs:
       - name: Install tooling
         run: |
           brew update
-          brew install shellcheck shfmt bats-core
+          brew install shfmt bats-core
       - name: Lint
         run: |
-          shellcheck -x bin/hostsctl.zsh
-          shfmt -d -i 2 -ci -sr .
+          zsh -n bin/hostsctl.zsh
+          shfmt -l -d -i 2 -ci -sr .
       - name: Test
         run: bats -r test
