@@ -1,0 +1,24 @@
+name: release
+on:
+  push:
+    tags:
+      - "v*"
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive
+        run: |
+          mkdir -p dist/hostsctl
+          cp -R bin LICENSE README.md dist/hostsctl/
+          (cd dist && tar czf hostsctl-${GITHUB_REF_NAME}.tar.gz hostsctl)
+          shasum -a 256 dist/hostsctl-${GITHUB_REF_NAME}.tar.gz | awk '{print $1}' > dist/sha256.txt
+      - name: GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/hostsctl-${{ github.ref_name }}.tar.gz
+            dist/sha256.txt
