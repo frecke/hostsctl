@@ -8,7 +8,7 @@ Tiny zsh CLI to manage `/etc/hosts` on macOS — add/remove/list, enable/disable
 
 ## Install
 
-### Homebrew (recommended)
+### Homebrew (coming soon)
 ```zsh
 brew tap frecke/tap
 brew install hostsctl
